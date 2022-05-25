@@ -1,4 +1,4 @@
-# EnodiaLogs
+# Enodia
 A python wrapper around kubectl logs to make searches easier
 
 In short, this is a version of git for Kubernetes logs. It will allow you to 
