@@ -15,6 +15,11 @@ pip install -r requirements.txt
 
 To install it on most systems.
 
+Enodia uses the auto-loading functionality of the Kubernetes Python client.
+If you can run kubectl commands, you're all set! If not, please make sure your
+local kubernetes client is set up properly, as per the official Kubernetes
+documentation.
+
 # Examples
 
 python3 enodia.py -o output.txt -s mytext1 mytext2 -c container_name \
