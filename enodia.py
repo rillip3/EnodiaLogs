@@ -114,6 +114,9 @@ def process(arguments):
     pod = arguments.pod[0][0]  # pod is required
     search = arguments.search[0]  # search is required, might be a list
     exclude = []
+    out = None
+    if arguments.container:
+        container = arguments.container[0][0]
     if arguments.exclude:
         exclude = arguments.exclude[0]  # might be a list
     if arguments.after:
@@ -124,7 +127,9 @@ def process(arguments):
         namespace = arguments.namespace[0][0]
     logs = enodia.get_logs(pod, namespace, container=container)
     results = enodia.search_logs(logs, search, exclude=exclude, before=before, after=after)
-    if arguments.out[0][0]:
+    if arguments.out:
+        out = arguments.out[0][0]
+    if out:
         with open(arguments.out[0][0], 'a') as outFile:
             pprint(results, stream=outFile)
         return 'Output written to %s' % arguments.out[0][0]
