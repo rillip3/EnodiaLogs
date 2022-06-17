@@ -80,9 +80,12 @@ class Enodia:
                         # save this entry for future use
                         continue
                         # required term missing, skip
+                    skipExclude = False
                     for exclusion in exclude:
                         if exclusion in line:
-                            continue  # an excluded term is present, skip
+                            skipExclude = True  # an excluded term is present, skip
+                    if skipExclude:
+                        continue
                     if before:  # the term is here, and they want the before buffer
                         results[key].extend(beforeBuffer.get_data())
                         beforeBuffer.empty() # flush items we already added
